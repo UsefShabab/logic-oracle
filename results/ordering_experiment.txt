@@ -1,0 +1,22 @@
+VARIABLE-ORDERING / COMPRESSION EXPERIMENT
+============================================================
+
+AV variable count n               : 6
+Truth-table rows (2^n)            : 64
+
+Composite AV rule node count      : 7
+    (L & ~P) & (G | R) & S
+
+6-variable parity (XOR) node count: 13
+    L ^ P ^ G ^ R ^ E ^ S          (worst-case stress test)
+
+Compression ratio (composite / table) : 0.109
+Compression ratio (parity / table)    : 0.203
+
+CONCLUSION
+------------------------------------------------------------
+Conjunctive AV rules compress dramatically: the composite rule
+uses a small fraction of the truth table's storage, while the
+parity-like rule fills the entire BDD. Most production AV rules
+are conjunctive, so BDD-based verification scales well to the
+10-30 sensor variables typical of a real ODD specification.

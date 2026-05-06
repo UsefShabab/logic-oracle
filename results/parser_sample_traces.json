@@ -1,0 +1,104 @@
+[
+  {
+    "input_prose": "Proceed if the traffic light is green and no pedestrian is in the crosswalk.",
+    "expected_expression": "L & ~P",
+    "parser_output": {
+      "variables": {
+        "L": "Traffic light is green",
+        "P": "Pedestrian detected in crosswalk"
+      },
+      "expression": "L & ~P",
+      "notes": null,
+      "source": "llm_cached",
+      "raw_response": "{\"variables\": {\"L\": \"Traffic light is green\", \"P\": \"Pedestrian detected in crosswalk\"}, \"expression\": \"L & ~P\", \"notes\": null}"
+    },
+    "is_correct": true,
+    "bdd_node_count": 4,
+    "satisfying_paths": [
+      {
+        "L": 1,
+        "P": 0
+      }
+    ]
+  },
+  {
+    "input_prose": "Proceed only if the light is green, no pedestrian is detected, the gap is safe, and the road is dry.",
+    "expected_expression": "L & ~P & G & R",
+    "parser_output": {
+      "variables": {
+        "L": "Traffic light is green",
+        "P": "Pedestrian detected in crosswalk",
+        "G": "Safe gap to lead vehicle",
+        "R": "Road surface safe (not icy/wet)"
+      },
+      "expression": "L & ~P & G & R",
+      "notes": null,
+      "source": "llm_cached",
+      "raw_response": "{\"variables\": {\"L\": \"Traffic light is green\", \"P\": \"Pedestrian detected in crosswalk\", \"G\": \"Safe gap to lead vehicle\", \"R\": \"Road surface safe (not icy/wet)\"}, \"expression\": \"L & ~P & G & R\", \"notes\": null}"
+    },
+    "is_correct": true,
+    "bdd_node_count": 6,
+    "satisfying_paths": [
+      {
+        "L": 1,
+        "P": 0,
+        "G": 1,
+        "R": 1
+      }
+    ]
+  },
+  {
+    "input_prose": "Proceed if the light is green and no pedestrian is detected, unless an emergency vehicle has been detected.",
+    "expected_expression": "(L & ~P) & ~E",
+    "parser_output": {
+      "variables": {
+        "L": "Traffic light is green",
+        "P": "Pedestrian detected in crosswalk",
+        "E": "Emergency vehicle detected nearby"
+      },
+      "expression": "(L & ~P) & ~E",
+      "notes": "Unless clause negates E and conjoins with the head.",
+      "source": "llm_cached",
+      "raw_response": "{\"variables\": {\"L\": \"Traffic light is green\", \"P\": \"Pedestrian detected in crosswalk\", \"E\": \"Emergency vehicle detected nearby\"}, \"expression\": \"(L & ~P) & ~E\", \"notes\": \"Unless clause negates E and conjoins with the head.\"}"
+    },
+    "is_correct": true,
+    "bdd_node_count": 5,
+    "satisfying_paths": [
+      {
+        "L": 1,
+        "P": 0,
+        "E": 0
+      }
+    ]
+  },
+  {
+    "input_prose": "Proceed only if the light is green, no pedestrian is in the crosswalk, the gap is safe, the road is dry, and the speed is within the limit, unless an emergency vehicle is detected.",
+    "expected_expression": "(L & ~P & G & R & S) & ~E",
+    "parser_output": {
+      "variables": {
+        "L": "Traffic light is green",
+        "P": "Pedestrian detected in crosswalk",
+        "G": "Safe gap to lead vehicle",
+        "R": "Road surface safe (not icy/wet)",
+        "S": "Speed within posted limit",
+        "E": "Emergency vehicle detected nearby"
+      },
+      "expression": "(L & ~P & G & R & S) & ~E",
+      "notes": "Unless clause overrides the conjunctive head.",
+      "source": "llm_cached",
+      "raw_response": "{\"variables\": {\"L\": \"Traffic light is green\", \"P\": \"Pedestrian detected in crosswalk\", \"G\": \"Safe gap to lead vehicle\", \"R\": \"Road surface safe (not icy/wet)\", \"S\": \"Speed within posted limit\", \"E\": \"Emergency vehicle detected nearby\"}, \"expression\": \"(L & ~P & G & R & S) & ~E\", \"notes\": \"Unless clause overrides the conjunctive head.\"}"
+    },
+    "is_correct": true,
+    "bdd_node_count": 8,
+    "satisfying_paths": [
+      {
+        "L": 1,
+        "P": 0,
+        "G": 1,
+        "R": 1,
+        "E": 0,
+        "S": 1
+      }
+    ]
+  }
+]

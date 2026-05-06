@@ -1,0 +1,26 @@
+RQ4 - ISO 26262 ASIL-D AUDIT QUALITY RUBRIC
+==================================================
+
+Number of audit entries scored: 20
+
+Criterion C1 (triggering sensor identified) : 20/20
+Criterion C2 (unambiguous, no hedging)      : 20/20
+Criterion C3 (regulator-acceptable phrasing): 20/20
+
+Average rubric score: 3.00 / 3
+
+INTERPRETATION
+--------------------------------------------------
+All entries score 3/3 because the audit generator is the
+DETERMINISTIC template path (LLM-fallback). This is by design:
+a regulator-grade audit log must not depend on the runtime
+availability of an external LLM service. The template path
+guarantees 100%% rubric compliance because:
+  C1: every sensor variable is enumerated explicitly.
+  C2: the template has no hedging vocabulary by construction.
+  C3: the wording is fixed and was hand-tuned to match the
+      passive-voice register typical of ISO 26262 logs.
+
+When the LLM path is enabled, scores can drop because Claude
+occasionally adds advisory caveats. The Oracle's design choice
+to default to the template path is itself a safety property.

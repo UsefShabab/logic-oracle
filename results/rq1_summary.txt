@@ -1,0 +1,23 @@
+RQ1 - PARSER ACCURACY vs NESTING DEPTH (14 items)
+==================================================
+
+LLM (claude-sonnet-4-6) overall : 14/14 (100%)
+Regex baseline      overall    : 12/14 (86%)
+
+Depth N   LLM       Regex     
+------------------------------
+1     5   5/5 (100%)  5/5 (100%)
+2     2   2/2 (100%)  2/2 (100%)
+3     3   3/3 (100%)  2/3 (67%)
+4     4   4/4 (100%)  3/4 (75%)
+
+INTERPRETATION
+--------------------------------------------------
+The LLM parser handles all 14 sentences correctly because
+each one falls within standard AV-spec language. The regex
+baseline drops to 67%% at depth 3 (it routes 'neither/nor'
+through its OR branch by mistake) and 75%% at depth 4. The
+gap between the two lines is the practical value of the LLM,
+but the BDD layer remains the only formal correctness
+guarantee: even an LLM that reaches 100%% on this benchmark
+can fail on adversarial inputs not in the training distribution.

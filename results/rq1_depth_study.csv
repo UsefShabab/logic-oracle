@@ -1,0 +1,15 @@
+id,depth,expected,llm_output,llm_correct,regex_output,regex_correct
+1,1,L & ~P,L & ~P,1,(L & ~P),1
+2,1,~L,~L,1,~L,1
+3,1,P,P,1,P,1
+4,1,E,E,1,E,1
+5,1,~S,~S,1,~S,1
+6,2,L & ~P & G & R,L & ~P & G & R,1,(L & ~P & G & R),1
+7,2,E | ~L,E | ~L,1,(~L | E),1
+8,3,L & ~P & G & R & S,L & ~P & G & R & S,1,(L & ~P & G & R & S),1
+9,3,(L & ~P) & ~E,(L & ~P) & ~E,1,(L & ~P) & ~E,1
+10,4,(L & ~P & G & R & S) & ~E,(L & ~P & G & R & S) & ~E,1,(L & ~P & G & R & S) & ~E,1
+11,4,(L & G & R) & ~(P | E),(L & G & R) & ~(P | E),1,(L & G & R) & ~(P | E),1
+12,4,(L & S & G) & ~(~R | P),(L & S & G) & ~(~R | P),1,(L & G & S) & ~(P | ~R),1
+13,3,L & ~P & ~E,L & ~P & ~E,1,(L & E),0
+14,4,L & ~P & G & R,L & ~P & G & R,1,(~L & ~P & R),0

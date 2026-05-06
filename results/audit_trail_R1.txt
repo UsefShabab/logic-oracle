@@ -1,0 +1,21 @@
+AUDIT TRAIL  -  Rule R1 (proceed)
+============================================================
+
+Total STOP/YIELD paths found in ROBDD: 4
+
+[01] BDD path : {'L': 0}
+     decision : STOP
+     audit    : The vehicle stopped under rule R1_proceed because the verified sensor state was: NOT (traffic light is green), NOT (pedestrian detected in crosswalk), NOT (safe gap to lead vehicle), NOT (road surface safe (not icy/wet)), NOT (emergency vehicle detected nearby), NOT (speed within posted limit).
+
+[02] BDD path : {'L': 1, 'P': 1}
+     decision : YIELD/STOP
+     audit    : The vehicle yield/stop under rule R1_proceed because the verified sensor state was: traffic light is green, pedestrian detected in crosswalk, NOT (safe gap to lead vehicle), NOT (road surface safe (not icy/wet)), NOT (emergency vehicle detected nearby), NOT (speed within posted limit).
+
+[03] BDD path : {'L': 1, 'P': 0, 'G': 0}
+     decision : YIELD/STOP
+     audit    : The vehicle yield/stop under rule R1_proceed because the verified sensor state was: traffic light is green, NOT (pedestrian detected in crosswalk), NOT (safe gap to lead vehicle), NOT (road surface safe (not icy/wet)), NOT (emergency vehicle detected nearby), NOT (speed within posted limit).
+
+[04] BDD path : {'L': 1, 'P': 0, 'G': 1, 'R': 0}
+     decision : YIELD/STOP
+     audit    : The vehicle yield/stop under rule R1_proceed because the verified sensor state was: traffic light is green, NOT (pedestrian detected in crosswalk), safe gap to lead vehicle, NOT (road surface safe (not icy/wet)), NOT (emergency vehicle detected nearby), NOT (speed within posted limit).
+

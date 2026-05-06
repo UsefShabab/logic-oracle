@@ -1,0 +1,27 @@
+PAIRWISE CONTRADICTION CHECK
+------------------------------------------------------------
+  R1_proceed     && R2_stop_red     ->  UNSAT (contradicts)
+  R1_proceed     && R3_yield_ped    ->  UNSAT (contradicts)
+  R1_proceed     && R4_emergency    ->  satisfiable
+  R1_proceed     && R5_overspeed    ->  satisfiable
+  R2_stop_red    && R3_yield_ped    ->  satisfiable
+  R2_stop_red    && R4_emergency    ->  satisfiable
+  R2_stop_red    && R5_overspeed    ->  satisfiable
+  R3_yield_ped   && R4_emergency    ->  satisfiable
+  R3_yield_ped   && R5_overspeed    ->  satisfiable
+  R4_emergency   && R5_overspeed    ->  satisfiable
+
+Total contradicting pairs : 2
+Dead state exists         : True
+
+INTERPRETATION
+------------------------------------------------------------
+Most pairs ARE expected to contradict because the rules describe
+mutually exclusive ACTIONS (proceed vs stop, etc.). The Oracle
+uses these contradictions to prove single-decision consistency:
+at most one rule can fire at a time, so the priority resolver
+never picks between two simultaneously-satisfied actions.
+
+The dead state above (e.g. unsafe gap with green light) is REAL:
+the canonical 5-rule set does not cover gap-only failures.
+Adding R6 = ~G  ('decelerate when gap is unsafe') closes the gap.

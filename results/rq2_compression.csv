@@ -1,0 +1,6 @@
+n_sensors,truth_table_rows,conjunctive_nodes,parity_nodes,conj_compression_ratio,parity_compression_ratio
+4,16,6,9,0.375,0.5625
+6,64,8,13,0.125,0.203125
+8,256,10,17,0.0390625,0.06640625
+10,1024,12,21,0.01171875,0.0205078125
+12,4096,14,25,0.00341796875,0.006103515625

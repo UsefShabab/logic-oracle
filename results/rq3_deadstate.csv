@@ -1,0 +1,5 @@
+rule_set,n_rules,states_total,states_covered,dead_states,dead_fraction,is_dead,n_contradictions
+3_basic,3,64,52,12,0.1875,True,2
+5_canonical,5,64,61,3,0.046875,True,2
+6_with_gap,6,64,63,1,0.015625,True,3
+7_with_road,7,64,64,0,0.0,False,4
